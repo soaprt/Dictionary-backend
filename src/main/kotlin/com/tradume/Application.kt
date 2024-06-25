@@ -2,6 +2,7 @@ package com.tradume
 
 import com.tradume.features.language.configureLanguageRouting
 import com.tradume.features.language_pair.configureLanguagePairRouting
+import com.tradume.features.word.configureWordRouting
 import io.ktor.server.engine.*
 import io.ktor.server.cio.*
 import com.tradume.plugins.*
@@ -28,5 +29,6 @@ fun Application.module() {
     configureRouting()
     configureLanguageRouting()
     configureLanguagePairRouting()
+    configureWordRouting()
     configureSerialization()
 }
