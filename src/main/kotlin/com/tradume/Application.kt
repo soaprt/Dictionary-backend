@@ -1,5 +1,6 @@
 package com.tradume
 
+import com.tradume.features.dictionary.configureDictionaryRouting
 import com.tradume.features.language.configureLanguageRouting
 import com.tradume.features.language_pair.configureLanguagePairRouting
 import com.tradume.features.word.configureWordRouting
@@ -28,6 +29,7 @@ fun main() {
 
 fun Application.module() {
     configureRouting()
+    configureDictionaryRouting()
     configureLanguageRouting()
     configureLanguagePairRouting()
     configureWordRouting()
