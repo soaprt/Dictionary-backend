@@ -2,6 +2,7 @@ package com.tradume.features.dictionary
 
 import com.tradume.features.language_pair.CheckLanguagePairResult
 import com.tradume.features.language_pair.LanguagePairController
+import com.tradume.features.toFetchMultipleDataResult
 import com.tradume.features.word.WordController
 import com.tradume.features.word_pair.WordPairController
 import com.tradume.utils.CheckDataResult
@@ -48,15 +49,16 @@ class DictionaryController(private val call: ApplicationCall) {
                     }
                 }
 
-                val result = mutableListOf<String>()
-                for (entry in resultMap.entries) {
-                    result.add("${entry.key} - ${entry.value.joinToString(", ")}")
-                }
-
-                call.respond(result)
+                call.respond(
+                    toFetchMultipleDataResult(
+                        resultMap.entries.map { toWordWithTranslation(it.key, it.value) }
+                    )
+                )
             } else {
                 call.respond(
-                    emptyList<String>()
+                    toFetchMultipleDataResult(
+                        emptyList<String>()
+                    )
                 )
             }
         } else {

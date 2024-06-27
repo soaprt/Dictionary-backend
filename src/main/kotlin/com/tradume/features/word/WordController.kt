@@ -2,7 +2,9 @@ package com.tradume.features.word
 
 import com.tradume.database.word.Word
 import com.tradume.database.word.WordDTO
+import com.tradume.features.FetchMultipleDataResult
 import com.tradume.features.language.LanguageController
+import com.tradume.features.toFetchMultipleDataResult
 import com.tradume.utils.CheckDataResult
 import com.tradume.utils.hasValidIdValue
 import com.tradume.utils.hasValue
@@ -149,6 +151,8 @@ class WordController(private val call: ApplicationCall) {
     }
 
     suspend fun fetchWords() {
-        call.respond(Word.fetchWords())
+        call.respond(
+            toFetchMultipleDataResult(Word.fetchWords())
+        )
     }
 }
